@@ -1,0 +1,152 @@
+{"t": 1791905370.9622, "type": "start", "clients": 5, "rounds": 10, "key_bits": 1024, "iid": false, "dp_noise": 0.0}
+{"t": 1791905371.008739, "type": "setup", "client_ids": ["client_1", "client_2", "client_3", "client_4", "client_5"], "sizes": [364, 242, 310, 266, 255], "n_params": 4810, "slots": 15, "keygen_s": 0.007601499790325761, "key_bits": 1024, "hook": "NoPrivacy", "plain_MB": 0.03848}
+{"t": 1791905371.0118551, "type": "round_start", "round": 1}
+{"t": 1791905371.0128615, "type": "client_training", "round": 1, "client": "client_1", "samples": 364}
+{"t": 1791905371.0249934, "type": "client_encrypting", "round": 1, "client": "client_1"}
+{"t": 1791905371.620028, "type": "client_done", "round": 1, "client": "client_1", "samples": 364, "train_s": 0.011771000223234296, "encrypt_s": 0.594229299807921, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00138, 0.00648], "ct_preview": "0x78a705ec9b29b8336d26b0364aecdad4bc7d36..."}
+{"t": 1791905371.6210403, "type": "client_training", "round": 1, "client": "client_2", "samples": 242}
+{"t": 1791905371.6264274, "type": "client_encrypting", "round": 1, "client": "client_2"}
+{"t": 1791905372.2093308, "type": "client_done", "round": 1, "client": "client_2", "samples": 242, "train_s": 0.0069269000086933374, "encrypt_s": 0.5790317000355572, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00138, 0.00648], "ct_preview": "0x588ee41649e8f50dfa499c61478d55c145f618..."}
+{"t": 1791905372.2093308, "type": "client_training", "round": 1, "client": "client_3", "samples": 310}
+{"t": 1791905372.219926, "type": "client_encrypting", "round": 1, "client": "client_3"}
+{"t": 1791905372.7158427, "type": "client_done", "round": 2, "client": "client_3", "samples": 188, "train_s": 0.007125900126993656, "encrypt_s": 1.9404390000272542, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [-0.0062, -0.02608, 0.0085], "ct_preview": "0x168c6e9775464ebb3a9ebc4a50b01c4c0be7e0..."}
+{"t": 1791905372.7158427, "type": "client_training", "round": 2, "client": "client_4", "samples": 384}
+{"t": 1791905372.7211506, "type": "client_encrypting", "round": 2, "client": "client_4"}
+{"t": 1791905372.7812636, "type": "client_done", "round": 1, "client": "client_3", "samples": 310, "train_s": 0.00946450000628829, "encrypt_s": 0.5621460000984371, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00138, 0.00648], "ct_preview": "0xeab26e443bb27d73547af77e5e4bd0589c6161..."}
+{"t": 1791905372.7838116, "type": "client_training", "round": 1, "client": "client_4", "samples": 266}
+{"t": 1791905372.7926872, "type": "client_encrypting", "round": 1, "client": "client_4"}
+{"t": 1791905373.3545768, "type": "client_done", "round": 1, "client": "client_4", "samples": 266, "train_s": 0.008605500217527151, "encrypt_s": 0.5613905999343842, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00138, 0.00648], "ct_preview": "0xd2deee5846357c222f0930501219d738b8d86d..."}
+{"t": 1791905373.3545768, "type": "client_training", "round": 1, "client": "client_5", "samples": 255}
+{"t": 1791905373.3639963, "type": "client_encrypting", "round": 1, "client": "client_5"}
+{"t": 1791905373.9401662, "type": "client_done", "round": 1, "client": "client_5", "samples": 255, "train_s": 0.007361399941146374, "encrypt_s": 0.5750895000528544, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00138, 0.00648], "ct_preview": "0x7f6f7ae6a4e576887b8af008130df250ec8074..."}
+{"t": 1791905374.5010004, "type": "server_aggregating", "round": 1}
+{"t": 1791905374.541069, "type": "server_aggregated", "round": 1, "seconds": 0.04076680005528033, "agg_preview": "0x49be37243627d77b88af07cd14059f25d71866..."}
+{"t": 1791905374.5469568, "type": "authority_decrypting", "round": 1}
+{"t": 1791905374.6345694, "type": "client_done", "round": 2, "client": "client_4", "samples": 384, "train_s": 0.008713499875739217, "encrypt_s": 1.9078837998677045, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [0.00417, -0.00208, -0.00249], "ct_preview": "0x3274b9250a93bc55c6db097e542961930bd989..."}
+{"t": 1791905374.6345694, "type": "client_training", "round": 2, "client": "client_5", "samples": 365}
+{"t": 1791905374.645344, "type": "client_encrypting", "round": 2, "client": "client_5"}
+{"t": 1791905374.725294, "type": "authority_decrypted", "round": 1, "seconds": 0.17777550010941923}
+{"t": 1791905374.7280085, "type": "round_done", "round": 1, "acc_he": 0.1, "acc_plain": 0.1, "max_err": 7.617871652773091e-06, "enc_s_per_client": 0.5743774199858308, "agg_s": 0.04076680005528033, "dec_s": 0.17777550010941923, "upload_MB_per_client": 0.082176, "clipped": 0}
+{"t": 1791905374.7280085, "type": "round_start", "round": 2}
+{"t": 1791905374.730019, "type": "client_training", "round": 2, "client": "client_1", "samples": 364}
+{"t": 1791905374.7412202, "type": "client_encrypting", "round": 2, "client": "client_1"}
+{"t": 1791905375.305366, "type": "client_done", "round": 2, "client": "client_1", "samples": 364, "train_s": 0.01036949991248548, "encrypt_s": 0.5629437000025064, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0xdf51ca750c4f3e51852b7a4bf6a11294384ad2..."}
+{"t": 1791905375.305366, "type": "client_training", "round": 2, "client": "client_2", "samples": 242}
+{"t": 1791905375.3112574, "type": "client_encrypting", "round": 2, "client": "client_2"}
+{"t": 1791905375.89266, "type": "client_done", "round": 2, "client": "client_2", "samples": 242, "train_s": 0.007420499809086323, "encrypt_s": 0.5771048001479357, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0xc84ac33d18800f3cc92eb37d3452656ccc36af..."}
+{"t": 1791905375.8936656, "type": "client_training", "round": 2, "client": "client_3", "samples": 310}
+{"t": 1791905375.9027557, "type": "client_encrypting", "round": 2, "client": "client_3"}
+{"t": 1791905376.4913387, "type": "client_done", "round": 2, "client": "client_3", "samples": 310, "train_s": 0.010006999829784036, "encrypt_s": 0.5869372999295592, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x2d54b363737262db80bd1b0bc6361dc1544e6d..."}
+{"t": 1791905376.4938934, "type": "client_training", "round": 2, "client": "client_4", "samples": 266}
+{"t": 1791905376.5008552, "type": "client_encrypting", "round": 2, "client": "client_4"}
+{"t": 1791905376.5710201, "type": "client_done", "round": 2, "client": "client_5", "samples": 365, "train_s": 0.010248499922454357, "encrypt_s": 1.9240747999865562, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [-0.00789, 0.00329, 0.01295], "ct_preview": "0x2238f123af35afc0556cc5b75a29bc6cff7ea5..."}
+{"t": 1791905376.5710201, "type": "server_aggregating", "round": 2}
+{"t": 1791905376.6409018, "type": "server_aggregated", "round": 2, "seconds": 0.06853349995799363, "agg_preview": "0x24ecfca7711ff9bcd14608b0493d4f25452ac8..."}
+{"t": 1791905376.6409018, "type": "authority_decrypting", "round": 2}
+{"t": 1791905377.0699878, "type": "client_done", "round": 2, "client": "client_4", "samples": 266, "train_s": 0.007123699877411127, "encrypt_s": 0.5682377000339329, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x6df6b66f47505bd50cf1978bc06cacfb575fc1..."}
+{"t": 1791905377.0715046, "type": "client_training", "round": 2, "client": "client_5", "samples": 255}
+{"t": 1791905377.0786867, "type": "client_encrypting", "round": 2, "client": "client_5"}
+{"t": 1791905377.1951976, "type": "authority_decrypted", "round": 2, "seconds": 0.5521261000540107}
+{"t": 1791905377.1983156, "type": "round_done", "round": 2, "acc_he": 0.1, "acc_plain": 0.1, "max_err": 7.0247873213552525e-06, "enc_s_per_client": 1.9782928999979048, "agg_s": 0.06853349995799363, "dec_s": 0.5521261000540107, "upload_MB_per_client": 0.079872, "clipped": 0}
+{"t": 1791905377.20034, "type": "round_start", "round": 3}
+{"t": 1791905377.2008855, "type": "client_training", "round": 3, "client": "client_1", "samples": 287}
+{"t": 1791905377.2085884, "type": "client_encrypting", "round": 3, "client": "client_1"}
+{"t": 1791905377.6582646, "type": "client_done", "round": 2, "client": "client_5", "samples": 255, "train_s": 0.006203900091350079, "encrypt_s": 0.5786215998232365, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x20be2b9f043ab4590efc0aa9fd78d4dbe24201..."}
+{"t": 1791905377.6582646, "type": "server_aggregating", "round": 2}
+{"t": 1791905377.7027621, "type": "server_aggregated", "round": 2, "seconds": 0.0431428998708725, "agg_preview": "0xc3fee46f7cc362899838a0123caee76f8212a5..."}
+{"t": 1791905377.7027621, "type": "authority_decrypting", "round": 2}
+{"t": 1791905377.8840296, "type": "authority_decrypted", "round": 2, "seconds": 0.180762899806723}
+{"t": 1791905377.886499, "type": "round_done", "round": 2, "acc_he": 0.1, "acc_plain": 0.1, "max_err": 6.377064674075242e-06, "enc_s_per_client": 0.5747690199874341, "agg_s": 0.0431428998708725, "dec_s": 0.180762899806723, "upload_MB_per_client": 0.082176, "clipped": 0}
+{"t": 1791905377.8874996, "type": "round_start", "round": 3}
+{"t": 1791905377.8884966, "type": "client_training", "round": 3, "client": "client_1", "samples": 364}
+{"t": 1791905377.8993256, "type": "client_encrypting", "round": 3, "client": "client_1"}
+{"t": 1791905378.5236564, "type": "client_done", "round": 3, "client": "client_1", "samples": 364, "train_s": 0.009988199919462204, "encrypt_s": 0.6229707999154925, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x82f262b8a7866ad14b86fe40d5f0d3f3240557..."}
+{"t": 1791905378.5247862, "type": "client_training", "round": 3, "client": "client_2", "samples": 242}
+{"t": 1791905378.5334947, "type": "client_encrypting", "round": 3, "client": "client_2"}
+{"t": 1791905379.1061256, "type": "client_done", "round": 3, "client": "client_2", "samples": 242, "train_s": 0.008824300020933151, "encrypt_s": 0.5710225999355316, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0xa91bf79697cb447288f27e6f209f4e8c89e48c..."}
+{"t": 1791905379.1064599, "type": "client_training", "round": 3, "client": "client_3", "samples": 310}
+{"t": 1791905379.122185, "type": "client_encrypting", "round": 3, "client": "client_3"}
+{"t": 1791905379.1767478, "type": "client_done", "round": 3, "client": "client_1", "samples": 287, "train_s": 0.007195300189778209, "encrypt_s": 1.9667971001472324, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [0.01723, 0.00036, -0.00679], "ct_preview": "0x1563f706b1c60effa0bd8086ada0ae58f58bf7..."}
+{"t": 1791905379.1777477, "type": "client_training", "round": 3, "client": "client_2", "samples": 213}
+{"t": 1791905379.18874, "type": "client_encrypting", "round": 3, "client": "client_2"}
+{"t": 1791905379.7410917, "type": "client_done", "round": 3, "client": "client_3", "samples": 310, "train_s": 0.014234100002795458, "encrypt_s": 0.6215508999302983, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x202e6bf82b3c4023901a57e7f3f96f501b63dd..."}
+{"t": 1791905379.7410917, "type": "client_training", "round": 3, "client": "client_4", "samples": 266}
+{"t": 1791905379.7539911, "type": "client_encrypting", "round": 3, "client": "client_4"}
+{"t": 1791905380.3201234, "type": "client_done", "round": 3, "client": "client_4", "samples": 266, "train_s": 0.008278599940240383, "encrypt_s": 0.5649409999605268, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x1c382fe3461c73e6576536e6a5b76822331427..."}
+{"t": 1791905380.321147, "type": "client_training", "round": 3, "client": "client_5", "samples": 255}
+{"t": 1791905380.3278837, "type": "client_encrypting", "round": 3, "client": "client_5"}
+{"t": 1791905381.154898, "type": "client_done", "round": 3, "client": "client_5", "samples": 255, "train_s": 0.005759399849921465, "encrypt_s": 0.8253066001925617, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x598351c66bef9be052148d27b85ea48e75e5f1..."}
+{"t": 1791905381.1552224, "type": "server_aggregating", "round": 3}
+{"t": 1791905381.2032616, "type": "server_aggregated", "round": 3, "seconds": 0.046684900065883994, "agg_preview": "0xcfa468d73212af0955c1c802ce300832d4ed7a..."}
+{"t": 1791905381.2039466, "type": "authority_decrypting", "round": 3}
+{"t": 1791905381.2762742, "type": "client_done", "round": 3, "client": "client_2", "samples": 213, "train_s": 0.009348300052806735, "encrypt_s": 2.086922900052741, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [0.00309, -0.01097, 0.00011], "ct_preview": "0x421ab2c6f76c0d1f63891b32cdae314b15246a..."}
+{"t": 1791905381.2772744, "type": "client_training", "round": 3, "client": "client_3", "samples": 188}
+{"t": 1791905381.2829483, "type": "client_encrypting", "round": 3, "client": "client_3"}
+{"t": 1791905381.3829799, "type": "authority_decrypted", "round": 3, "seconds": 0.17893700022250414}
+{"t": 1791905381.3860726, "type": "round_done", "round": 3, "acc_he": 0.275, "acc_plain": 0.275, "max_err": 6.322176613209746e-06, "enc_s_per_client": 0.6411583799868822, "agg_s": 0.046684900065883994, "dec_s": 0.17893700022250414, "upload_MB_per_client": 0.082176, "clipped": 0}
+{"t": 1791905381.3870728, "type": "round_start", "round": 4}
+{"t": 1791905381.3880553, "type": "client_training", "round": 4, "client": "client_1", "samples": 364}
+{"t": 1791905381.3982189, "type": "client_encrypting", "round": 4, "client": "client_1"}
+{"t": 1791905382.0194309, "type": "client_done", "round": 4, "client": "client_1", "samples": 364, "train_s": 0.009661999996751547, "encrypt_s": 0.6206058000680059, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x1587f09208995d5dcee2f607ac48be82905003..."}
+{"t": 1791905382.0209603, "type": "client_training", "round": 4, "client": "client_2", "samples": 242}
+{"t": 1791905382.0359616, "type": "client_encrypting", "round": 4, "client": "client_2"}
+{"t": 1791905382.6809397, "type": "client_done", "round": 4, "client": "client_2", "samples": 242, "train_s": 0.011594999814406037, "encrypt_s": 0.6459352998062968, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x4246672c378b0aef5e5dc05e8a421db07b7f01..."}
+{"t": 1791905382.683785, "type": "client_training", "round": 4, "client": "client_3", "samples": 310}
+{"t": 1791905382.6924684, "type": "client_encrypting", "round": 4, "client": "client_3"}
+{"t": 1791905383.3102481, "type": "client_done", "round": 4, "client": "client_3", "samples": 310, "train_s": 0.009207900147885084, "encrypt_s": 0.61573680001311, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x56e07c6050f7f72ee53a80b5ac1c47f054a9cf..."}
+{"t": 1791905383.3109767, "type": "client_training", "round": 4, "client": "client_4", "samples": 266}
+{"t": 1791905383.3221548, "type": "client_encrypting", "round": 4, "client": "client_4"}
+{"t": 1791905383.3300679, "type": "client_done", "round": 3, "client": "client_3", "samples": 188, "train_s": 0.005620099836960435, "encrypt_s": 2.044982299907133, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [0.0112, -0.00293, -0.0063], "ct_preview": "0x417a350a23a1445034107ee27f041b04501dbe..."}
+{"t": 1791905383.330823, "type": "client_training", "round": 3, "client": "client_4", "samples": 384}
+{"t": 1791905383.3435085, "type": "client_encrypting", "round": 3, "client": "client_4"}
+{"t": 1791905383.9365196, "type": "client_done", "round": 4, "client": "client_4", "samples": 266, "train_s": 0.01048820000141859, "encrypt_s": 0.6129631998483092, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0xb6c7285b3824dd9f09aeb592adfefa69b2e49b..."}
+{"t": 1791905383.937519, "type": "client_training", "round": 4, "client": "client_5", "samples": 255}
+{"t": 1791905383.946415, "type": "client_encrypting", "round": 4, "client": "client_5"}
+{"t": 1791905384.5331504, "type": "client_done", "round": 4, "client": "client_5", "samples": 255, "train_s": 0.007736499886959791, "encrypt_s": 0.5853775998111814, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x4e6f6ea03df29643c395fbbdaf8fb1e90f279e..."}
+{"t": 1791905384.533645, "type": "server_aggregating", "round": 4}
+{"t": 1791905384.5753126, "type": "server_aggregated", "round": 4, "seconds": 0.041151899844408035, "agg_preview": "0x22a6573aea7fa350f744e2009ee25ad2aa1e77..."}
+{"t": 1791905384.5753126, "type": "authority_decrypting", "round": 4}
+{"t": 1791905384.7509508, "type": "authority_decrypted", "round": 4, "seconds": 0.17522770003415644}
+{"t": 1791905384.753845, "type": "round_done", "round": 4, "acc_he": 0.25833333333333336, "acc_plain": 0.25833333333333336, "max_err": 6.234468505296985e-06, "enc_s_per_client": 0.6161237399093806, "agg_s": 0.041151899844408035, "dec_s": 0.17522770003415644, "upload_MB_per_client": 0.082176, "clipped": 0}
+{"t": 1791905384.753845, "type": "round_start", "round": 5}
+{"t": 1791905384.7553842, "type": "client_training", "round": 5, "client": "client_1", "samples": 364}
+{"t": 1791905384.7650995, "type": "client_encrypting", "round": 5, "client": "client_1"}
+{"t": 1791905385.2720785, "type": "client_done", "round": 3, "client": "client_4", "samples": 384, "train_s": 0.012242699973285198, "encrypt_s": 1.9291407000273466, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [0.01286, 0.00385, 0.01297], "ct_preview": "0x2476eeddd60cdbde8ee2088ea88e008a898119..."}
+{"t": 1791905385.2720785, "type": "client_training", "round": 3, "client": "client_5", "samples": 365}
+{"t": 1791905385.2860641, "type": "client_encrypting", "round": 3, "client": "client_5"}
+{"t": 1791905385.3249838, "type": "client_done", "round": 5, "client": "client_1", "samples": 364, "train_s": 0.009625899838283658, "encrypt_s": 0.5585932000540197, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0xd473a9f3539024993ba0e3f0dcb78ecb3b141e..."}
+{"t": 1791905385.3249838, "type": "client_training", "round": 5, "client": "client_2", "samples": 242}
+{"t": 1791905385.3324714, "type": "client_encrypting", "round": 5, "client": "client_2"}
+{"t": 1791905385.9110136, "type": "client_done", "round": 5, "client": "client_2", "samples": 242, "train_s": 0.0075622000731527805, "encrypt_s": 0.578401800012216, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x4e8dfc1d7af1880f6df3e3f4c6abacf0efa1b5..."}
+{"t": 1791905385.9134958, "type": "client_training", "round": 5, "client": "client_3", "samples": 310}
+{"t": 1791905385.9221015, "type": "client_encrypting", "round": 5, "client": "client_3"}
+{"t": 1791905386.5128787, "type": "client_done", "round": 5, "client": "client_3", "samples": 310, "train_s": 0.0087933000177145, "encrypt_s": 0.5896149999462068, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0xea1d98f179b0c6e9a572bc2c6e7a80745056ac..."}
+{"t": 1791905386.5128787, "type": "client_training", "round": 5, "client": "client_4", "samples": 266}
+{"t": 1791905386.5241642, "type": "client_encrypting", "round": 5, "client": "client_4"}
+{"t": 1791905387.1661718, "type": "client_done", "round": 5, "client": "client_4", "samples": 266, "train_s": 0.009811100084334612, "encrypt_s": 0.6404738000128418, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x1b456eacb04a76e5455f9e9b5c2952519529a9..."}
+{"t": 1791905387.1671727, "type": "client_training", "round": 5, "client": "client_5", "samples": 255}
+{"t": 1791905387.175201, "type": "client_encrypting", "round": 5, "client": "client_5"}
+{"t": 1791905387.2652068, "type": "client_done", "round": 3, "client": "client_5", "samples": 365, "train_s": 0.010091000003740191, "encrypt_s": 1.9780975000467151, "n_ciphertexts": 156, "upload_bytes": 79872, "clipped": 0, "true_preview": [-0.00116, -0.00918, 0.00785], "ct_preview": "0x13fb080afd4cd9c4bb56dca695831659b915b3..."}
+{"t": 1791905387.2652068, "type": "server_aggregating", "round": 3}
+{"t": 1791905387.3355837, "type": "server_aggregated", "round": 3, "seconds": 0.069249999942258, "agg_preview": "0x17705bbe2ebfda627631b625de16cce060074a..."}
+{"t": 1791905387.3355837, "type": "authority_decrypting", "round": 3}
+{"t": 1791905387.7808375, "type": "client_done", "round": 5, "client": "client_5", "samples": 255, "train_s": 0.006728499894961715, "encrypt_s": 0.6080593001097441, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x33ea79d2a5f7f4d3c1f3227bebc70a807f3973..."}
+{"t": 1791905387.7808375, "type": "server_aggregating", "round": 5}
+{"t": 1791905387.8251486, "type": "server_aggregated", "round": 5, "seconds": 0.04093980020843446, "agg_preview": "0xa18ac36d60a853076c14534990257f478f61b7..."}
+{"t": 1791905387.8251486, "type": "authority_decrypting", "round": 5}
+{"t": 1791905387.9211159, "type": "authority_decrypted", "round": 3, "seconds": 0.5842541998717934}
+{"t": 1791905387.9320068, "type": "round_done", "round": 3, "acc_he": 0.1, "acc_plain": 0.1, "max_err": 6.702492540138372e-06, "enc_s_per_client": 2.0011881000362335, "agg_s": 0.069249999942258, "dec_s": 0.5842541998717934, "upload_MB_per_client": 0.079872, "clipped": 0}
+{"t": 1791905387.9340918, "type": "round_start", "round": 4}
+{"t": 1791905387.9366312, "type": "client_training", "round": 4, "client": "client_1", "samples": 287}
+{"t": 1791905387.9519382, "type": "client_encrypting", "round": 4, "client": "client_1"}
+{"t": 1791905388.1360395, "type": "authority_decrypted", "round": 5, "seconds": 0.30848889984190464}
+{"t": 1791905388.139044, "type": "round_done", "round": 5, "acc_he": 0.39166666666666666, "acc_plain": 0.39166666666666666, "max_err": 6.821714403212539e-06, "enc_s_per_client": 0.5950286200270056, "agg_s": 0.04093980020843446, "dec_s": 0.30848889984190464, "upload_MB_per_client": 0.082176, "clipped": 0}
+{"t": 1791905388.1400452, "type": "round_start", "round": 6}
+{"t": 1791905388.1400452, "type": "client_training", "round": 6, "client": "client_1", "samples": 364}
+{"t": 1791905388.153403, "type": "client_encrypting", "round": 6, "client": "client_1"}
+{"t": 1791905388.7608738, "type": "client_done", "round": 6, "client": "client_1", "samples": 364, "train_s": 0.011119400151073933, "encrypt_s": 0.6063251001760364, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x9c97544a5d1c65ba42705a30e34650e7d02fbb..."}
+{"t": 1791905388.7608738, "type": "client_training", "round": 6, "client": "client_2", "samples": 242}
+{"t": 1791905388.7687452, "type": "client_encrypting", "round": 6, "client": "client_2"}
+{"t": 1791905389.388734, "type": "client_done", "round": 6, "client": "client_2", "samples": 242, "train_s": 0.006786399986594915, "encrypt_s": 0.6202100000809878, "n_ciphertexts": 321, "upload_bytes": 82176, "clipped": 0, "true_preview": [0.00497, -0.00139, 0.00647], "ct_preview": "0x1f8b4f02784f155fc9ea082748511cc63eaaa3..."}
+{"t": 1791905389.3920527, "type": "client_training", "round": 6, "client": "client_3", "samples": 310}
+{"t": 1791905389.4032333, "type": "client_encrypting", "round": 6, "client": "client_3"}

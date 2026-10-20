@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Encrypted FL Dashboard</title>
+<style>
+:root{--bg:#14161a;--panel:#1c1f25;--line:#2b2f37;--ink:#f0efec;--ink2:#c3c2b7;--mute:#8a8a82;
+--blue:#3987e5;--orange:#d95926;--green:#34b27b;--amber:#e0a030;--red:#e66767;}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:20px;margin:0}h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:0 0 10px;font-weight:600}
+.top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}
+.sub{color:var(--ink2);font-size:13px;margin-top:2px}
+.ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+select,input{background:#23272e;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:7px 8px;font:inherit}
+input[type=number]{width:70px}
+button{background:var(--blue);color:#fff;border:0;border-radius:6px;padding:8px 16px;font:inherit;font-weight:600;cursor:pointer}
+button:disabled{opacity:.45;cursor:default}
+.pill{padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;border:1px solid var(--line);color:var(--ink2)}
+.pill.run{color:var(--amber);border-color:var(--amber)}.pill.ok{color:var(--green);border-color:var(--green)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:repeat(2,1fr)}}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.step{border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--mute)}
+.step b{display:block;color:var(--ink2);font-size:13px}.step small{font-size:12px}
+.step.active{border-color:var(--amber);color:var(--ink);box-shadow:0 0 0 1px var(--amber) inset}
+.step.done{border-color:var(--green)}.step.done b::before{content:"✓ ";color:var(--green)}
+.card{border:1px solid var(--line);border-radius:8px;padding:10px;min-height:128px}
+.card .id{font-weight:600}.card .st{font-size:12px;margin:2px 0 6px;color:var(--mute)}
+.card.training .st{color:var(--amber)}.card.encrypting .st{color:var(--blue)}.card.sent .st{color:var(--green)}
+.kv{font-size:12px;color:var(--ink2)}.kv span{color:var(--mute)}
+code{font:12px ui-monospace,Consolas,monospace;word-break:break-all}
+.cipher{color:var(--blue)}.plain{color:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--mute);font-weight:600;font-size:12px}th:first-child,td:first-child{text-align:left}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
+.kpi .v{font-size:22px;font-weight:700}.kpi .l{font-size:12px;color:var(--mute)}
+@media(max-width:700px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.bar{height:8px;background:#2a2e36;border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--blue)}
+.note{color:var(--mute);font-size:12px;margin-top:8px}
+svg text{fill:var(--ink2);font-size:11px}
+</style></head><body><div class="wrap">
+<div class="top"><div><h1>Privacy-Preserving Federated Learning — Live Dashboard</h1>
+<div class="sub">Paillier homomorphic encryption · everything below is streamed from the running code</div></div>
+<div class="ctl"><label class="sub">Key <select id="kb"><option>1024</option><option>2048</option></select></label>
+<label class="sub">Rounds <input id="rd" type="number" min="1" max="30" value="10"></label>
+<label class="sub">DP hook <select id="dp"><option value="0">off</option><option value="0.01">placeholder noise</option></select></label>
+<button id="go">Start training</button><span id="status" class="pill">idle</span></div></div>
+
+<div class="kpis">
+<div class="kpi"><div class="v" id="k-acc">–</div><div class="l">Global accuracy (encrypted FedAvg)</div></div>
+<div class="kpi"><div class="v" id="k-err">–</div><div class="l">Max difference vs plain FedAvg</div></div>
+<div class="kpi"><div class="v" id="k-time">–</div><div class="l">Encrypt / aggregate / decrypt (s)</div></div>
+<div class="kpi"><div class="v" id="k-bw">–</div><div class="l">Upload per client (encrypted vs plain)</div></div></div>
+
+<div class="panel"><h2>Round <span id="rn">–</span> pipeline</h2><div class="pipe" id="pipe"></div></div>
+<div class="panel"><h2>Clients (data never leaves them)</h2><div class="grid3" id="clients"></div></div>
+
+<div class="grid2">
+<div class="panel"><h2>Global accuracy per round</h2><div id="chart"></div>
+<div class="note">Blue = encrypted aggregation, orange = plain FedAvg on the same updates. They should sit on top of each other.</div></div>
+<div class="panel"><h2>What the server actually receives</h2><div id="view" class="kv">Waiting for a client to finish…</div>
+<h2 style="margin-top:16px">Privacy budget (adaptive DP)</h2><div id="dp-panel" class="kv">Waiting for the DP module. Its hook can report per-client ε through <code>budget_report()</code>.</div></div></div>
+
+<div class="panel"><h2>Rounds</h2><table><thead><tr><th>Round</th><th>Acc (encrypted)</th><th>Acc (plain)</th><th>Max |diff|</th><th>Encrypt/client</th><th>Server agg</th><th>Decrypt</th></tr></thead><tbody id="rows"></tbody></table></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let S, cursor=0, total=10;
+function reset(){S={setup:null,clients:{},rounds:[],stage:0,done:false,view:null,dp:null,round:0,running:false}}
+reset();
+const STEPS=[["Clients train locally","raw data stays put"],["Clients encrypt","Paillier, public key"],["Server multiplies ciphertexts","cannot read anything"],["Authority decrypts the sum","only the aggregate"]];
+function apply(e){
+ switch(e.type){
+ case "start": reset(); total=e.rounds; S.running=true; break;
+ case "setup": S.setup=e; break;
+ case "round_start": S.round=e.round; S.stage=1; S.done=false; for(const id of S.setup.client_ids) S.clients[id]={state:"waiting"}; break;
+ case "client_training": S.stage=1; S.clients[e.client]={state:"training",samples:e.samples}; break;
+ case "client_encrypting": S.stage=2; S.clients[e.client].state="encrypting"; break;
+ case "client_done": S.clients[e.client]=Object.assign({state:"sent"},e); S.view=e; break;
+ case "server_aggregating": S.stage=3; break;
+ case "server_aggregated": S.agg=e; break;
+ case "authority_decrypting": S.stage=4; break;
+ case "authority_decrypted": break;
+ case "round_done": S.rounds.push(e); S.stage=5; break;
+ case "dp_budget": S.dp=e; break;
+ case "finished": S.done=true; S.fin=e; break;
+ }}
+function fmt(x,d=2){return x==null?"–":Number(x).toFixed(d)}
+function render(){
+ const last=S.rounds[S.rounds.length-1];
+ $("rn").textContent=S.round?S.round+" / "+total:"–";
+ $("pipe").innerHTML=STEPS.map((s,i)=>{const n=i+1;const cls=S.stage>n||S.stage===5?"done":(S.stage===n?"active":"");return `<div class="step ${cls}"><b>${s[0]}</b><small>${s[1]}</small></div>`}).join("");
+ const ids=S.setup?S.setup.client_ids:["client_1","client_2","client_3","client_4","client_5"];
+ $("clients").innerHTML=ids.map(id=>{const c=S.clients[id]||{state:"waiting"};
+  const lbl={waiting:"waiting",training:"training locally…",encrypting:"encrypting…",sent:"encrypted update sent"}[c.state];
+  const sz=S.setup?S.setup.sizes[ids.indexOf(id)]:"–";
+  return `<div class="card ${c.state}"><div class="id">${id}</div><div class="st">${lbl}</div>
+  <div class="kv"><span>samples</span> ${c.samples||sz}</div>
+  ${c.state==="sent"?`<div class="kv"><span>train</span> ${fmt(c.train_s,2)}s · <span>encrypt</span> ${fmt(c.encrypt_s,2)}s</div>
+  <div class="kv"><span>ciphertexts</span> ${c.n_ciphertexts} · ${fmt(c.upload_bytes/1e6,3)} MB</div>`:""}</div>`}).join("");
+ if(S.view){const v=S.view;$("view").innerHTML=`<div><span style="color:var(--mute)">${v.client} — its own first 3 weights (stay on the client)</span><br><code class="plain">${JSON.stringify(v.true_preview)}</code></div>
+ <div style="margin-top:8px"><span style="color:var(--mute)">Same update as the server sees it</span><br><code class="cipher">${v.ct_preview}</code></div>
+ ${S.agg?`<div style="margin-top:8px"><span style="color:var(--mute)">Server's aggregate (still encrypted)</span><br><code class="cipher">${S.agg.agg_preview}</code></div>`:""}`}
+ if(!last){for(const k of ["k-acc","k-err","k-time","k-bw"]) $(k).textContent="–";}
+ if(last){$("k-acc").textContent=fmt(last.acc_he*100,1)+"%";$("k-err").textContent=Number(last.max_err).toExponential(1);
+  const m=k=>S.rounds.reduce((a,r)=>a+r[k],0)/S.rounds.length;
+  $("k-time").textContent=fmt(m("enc_s_per_client"),2)+" / "+fmt(m("agg_s"),2)+" / "+fmt(m("dec_s"),2);
+  $("k-bw").textContent=fmt(last.upload_MB_per_client,3)+" vs "+fmt(S.setup.plain_MB,3)+" MB";}
+ if(!S.dp)$("dp-panel").innerHTML="Waiting for the DP module. Its hook can report per-client ε through <code>budget_report()</code>.";
+ $("rows").innerHTML=S.rounds.slice().reverse().map(r=>`<tr><td>${r.round}</td><td>${fmt(r.acc_he*100,1)}%</td><td>${fmt(r.acc_plain*100,1)}%</td><td>${Number(r.max_err).toExponential(1)}</td><td>${fmt(r.enc_s_per_client,2)}s</td><td>${fmt(r.agg_s,3)}s</td><td>${fmt(r.dec_s,2)}s</td></tr>`).join("");
+ if(S.dp){const rep=S.dp.report;$("dp-panel").innerHTML=Object.keys(rep).map(c=>{const r=rep[c];const pct=Math.min(100,100*r.epsilon_used/r.epsilon_total);
+  return `<div style="margin:6px 0"><div>${c} · ε used ${fmt(r.epsilon_used,2)} / ${fmt(r.epsilon_total,2)}</div><div class="bar"><i style="width:${pct}%;background:${pct>90?'var(--red)':pct>70?'var(--amber)':'var(--blue)'}"></i></div></div>`}).join("")}
+ chart();
+ const st=$("status");st.className="pill "+(S.done?"ok":(S.running?"run":""));st.textContent=S.done?"finished":(S.running?"running":"idle");
+ $("go").disabled=S.running&&!S.done;}
+function chart(){const W=560,H=250,L=36,B=26,T=10,R=70,n=Math.max(total,2);
+ const x=i=>L+(W-L-R)*(i-1)/(n-1),y=v=>T+(H-T-B)*(1-v/100);
+ let g="";for(const v of [0,25,50,75,100]) g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#2b2f37"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
+ for(let i=1;i<=n;i++) g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${i}</text>`;
+ const pts=k=>S.rounds.map(r=>`${x(r.round)},${y(r[k]*100)}`).join(" ");
+ const lastR=S.rounds[S.rounds.length-1];
+ if(S.rounds.length){
+  g+=`<polyline points="${pts('acc_plain')}" fill="none" stroke="#d95926" stroke-width="2"/>`+S.rounds.map(r=>`<circle cx="${x(r.round)}" cy="${y(r.acc_plain*100)}" r="6" fill="#d95926" stroke="#1c1f25" stroke-width="2"/>`).join("");
+  g+=`<polyline points="${pts('acc_he')}" fill="none" stroke="#3987e5" stroke-width="2"/>`+S.rounds.map(r=>`<circle cx="${x(r.round)}" cy="${y(r.acc_he*100)}" r="3.5" fill="#3987e5" stroke="#1c1f25" stroke-width="1.5"/>`).join("");
+  g+=`<text x="${x(lastR.round)+10}" y="${y(lastR.acc_he*100)-4}" style="fill:#3987e5">encrypted</text><text x="${x(lastR.round)+10}" y="${y(lastR.acc_plain*100)+12}" style="fill:#d95926">plain</text>`}
+ g+=`<text x="${(L+W-R)/2}" y="${H}" text-anchor="middle" style="font-size:10px"></text>`;
+ $("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Accuracy per round, encrypted vs plain">${g}</svg>`}
+async function poll(){try{const r=await fetch("/events?since="+cursor);const j=await r.json();
+  if(j.next<cursor){cursor=0;reset()} for(const e of j.events) apply(e); cursor=j.next; if(!j.running&&!S.done&&S.running&&!j.events.length&&cursor>0) S.running=false; render();}catch(e){}
+ setTimeout(poll,500)}
+$("go").onclick=async()=>{ $("go").disabled=true; cursor=0; reset(); S.running=true; render();
+ const res=await fetch("/run",{method:"POST",body:JSON.stringify({key_bits:+$("kb").value,rounds:+$("rd").value,dp_noise:+$("dp").value})});
+ if(!res.ok){S.running=false;alert((await res.json()).error||"could not start");} };
+render();poll();
+</script></body></html>

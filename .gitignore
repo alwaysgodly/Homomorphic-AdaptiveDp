@@ -1,0 +1,52 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Build outputs
+dist/
+build/
+out/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Local databases
+*.sqlite3
+*.db
+
+# Large model and dataset files
+*.pth
+*.pt
+*.h5
+*.hdf5
+datasets/
+data/raw/

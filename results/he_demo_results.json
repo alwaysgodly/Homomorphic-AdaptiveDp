@@ -1,0 +1,43 @@
+{
+  "clients": 5,
+  "rounds": 3,
+  "key_bits": 2048,
+  "iid": false,
+  "dp_noise": 0.0,
+  "slots": 31,
+  "history": [
+    {
+      "round": 1,
+      "acc_he": 0.1,
+      "acc_plain": 0.1,
+      "max_err": 7.617871652773958e-06,
+      "enc_s_per_client": 1.9670207199640573,
+      "agg_s": 0.06533180014230311,
+      "dec_s": 0.561791299842298,
+      "upload_MB_per_client": 0.079872,
+      "clipped": 0
+    },
+    {
+      "round": 2,
+      "acc_he": 0.11388888888888889,
+      "acc_plain": 0.11388888888888889,
+      "max_err": 7.049842937531699e-06,
+      "enc_s_per_client": 1.9263737000059336,
+      "agg_s": 0.06391959986649454,
+      "dec_s": 0.5722263001371175,
+      "upload_MB_per_client": 0.079872,
+      "clipped": 0
+    },
+    {
+      "round": 3,
+      "acc_he": 0.10277777777777777,
+      "acc_plain": 0.10277777777777777,
+      "max_err": 6.6192812576797155e-06,
+      "enc_s_per_client": 1.9215385999530554,
+      "agg_s": 0.06132520013488829,
+      "dec_s": 0.5495003000833094,
+      "upload_MB_per_client": 0.079872,
+      "clipped": 0
+    }
+  ]
+}
